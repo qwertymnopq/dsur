@@ -1,0 +1,4 @@
+data(iris) 
+head(iris) 
+stats <- summary(iris) 
+print(stats)
