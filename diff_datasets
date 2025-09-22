@@ -1,0 +1,32 @@
+# Reading a CSV file from disk 
+
+file_path <-"D:/R/Iris.csv" 
+data_csv <-read.csv(file_path) 
+print("CSV Data from Disk:") 
+head(data_csv) 
+
+
+# Reading a CSV file from the web 
+
+url <- "https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv" 
+iris_data <- read.csv(url, header = TRUE, stringsAsFactors = FALSE) 
+head(iris_data) 
+
+
+# Reading a TXT file from disk 
+
+txt_file_path <- "D:/R/marks_all.txt" 
+data_txt <- read.table(txt_file_path,header=TRUE) 
+print(data_txt)
+
+
+# Writing CSV 
+output_csv_path <- "D:/R/iris.csv" 
+write.csv(data_csv, file = output_csv_path, row.names = FALSE) 
+cat("CSV file written successfully at:", output_csv_path, "\n")
+
+# Writing TXT 
+output_txt_path <- "D:/R/marks_all.txt" 
+txt_content <- c("This is a sample text line 1.", "This is line 2.") 
+writeLines(txt_content, con = output_txt_path) 
+cat("TXT file written successfully at:", output_txt_path, "\n") 
