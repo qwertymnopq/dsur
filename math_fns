@@ -1,0 +1,20 @@
+cat("Calculator with Mathematical Functions\n")
+cat("Choose operation:\n")
+cat("1: Square Root\n2: Logarithm\n3: Exponential\n4: Absolute Value\n")
+cat("5: Round \n6: Ceiling\n7: Floor\n8: Factorial\n")
+choice <- as.integer(readline("Enter choice (1-8): "))
+num <- as.numeric(readline("Enter number: "))
+
+result <- switch(choice,
+  sqrt(num),            
+  log(num),             
+  exp(num),             
+  abs(num),             
+  round(num, 2),        
+  ceiling(num),         
+  floor(num),
+  if (num >= 0 && num == floor(num)) factorial(num) else "Error: Factorial only for non-negative integers", 
+  "Invalid choice"
+)
+
+print(paste("Result =", result))
