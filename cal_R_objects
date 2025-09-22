@@ -1,0 +1,21 @@
+cat("Calculator (With R Objects)\n")
+
+num <- numeric(2)
+num[1] <- as.numeric(readline("Enter first number: "))
+num[2] <- as.numeric(readline("Enter second number: "))
+
+opr <- list(
+  "+" = function(x, y) x + y,
+  "-" = function(x, y) x - y,
+  "*" = function(x, y) x * y,
+  "/" = function(x, y) if (y != 0) x / y else "Error: Division by zero"
+)
+
+op <- readline("Enter operator (+, -, *, /): ")
+
+if (op %in% names(opr)) {
+  res <- opr[[op]](num[1], num[2])
+} else {
+  res <- "Invalid operator"
+}
+print(paste("Result =", res))
