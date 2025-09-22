@@ -1,0 +1,68 @@
+# tidyr
+install.packages("tidyr")
+library(tidyr)
+df <- data.frame(
+  Name = c("A", "B"), Maths = c(80, 90), Sci = c(70, 85)
+)
+long_df <- gather(df, Subject, Marks, c(Maths, Sci))
+print(long_df)
+
+---------------------------------------------------------
+
+install.packages("ggplot2") 
+library(ggplot2)
+ggplot(data = mtcars, aes(x = hp, y = mpg)) +
+  geom_point(color = "blue", size = 3) +
+  labs(title = "Miles per Gallon vs Horsepower",
+       x = "Horsepower",
+       y = "Miles per Gallon")
+
+---------------------------------------------------------
+
+install.packages("glue") 
+library(glue)
+a <- 10
+b <- 20
+sum <- a + b
+message <- glue("The sum of {a} and {b} is {sum}.")
+print(message)
+
+---------------------------------------------------------
+
+install.packages(“ggraph”) 
+library(ggraph) 
+library(igraph) 
+graph <- make_ring(3) 
+# Plot the graph 
+ggraph(graph, layout = "circle") + geom_edge_link() +           
+geom_node_point(size = 5, color = "blue") +   
+ggtitle("Simple 3-Node Ring Graph") 
+
+----------------------------------------------------------
+
+install.packages(“shiny”) 
+library(shiny) 
+ui <- fluidPage( 
+  titlePanel("Mini Calculator"), 
+  numericInput("num1", "First number:", 0), 
+  numericInput("num2", "Second number:", 0), 
+  radioButtons("operation", "Choose operation:",  
+               choices = c("Add", "Subtract", "Multiply", "Divide")), 
+  textOutput("result") 
+) 
+ 
+server <- function(input, output) { 
+  output$result <- renderText({ 
+    res <- switch(input$operation, 
+                  "Add" = input$num1 + input$num2, 
+                  "Subtract" = input$num1 - input$num2, 
+                  "Multiply" = input$num1 * input$num2, 
+                  "Divide" = { 
+                    if(input$num2 == 0) "Cannot divide by zero" else input$num1 / 
+input$num2 }) 
+    paste("Result:", res) 
+  }) 
+} 
+shinyApp(ui = ui, server = server) 
+
+---------------------------------------------------------------
