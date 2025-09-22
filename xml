@@ -1,0 +1,20 @@
+install.packages("XML")  # Run once
+library(XML)
+xml_file <- xmlParse("D:/R/stud_marks.xml")  # Update path if needed
+student_nodes <- getNodeSet(xml_file, "//student")
+student_df <- xmlToDataFrame(student_nodes)
+print(student_df)
+
+  ------------------------------------
+  stud_marks.xml
+
+  <students>
+  <student>
+    <name>Jayasri</name>
+    <marks>95</marks>
+  </student>
+  <student>
+    <name>Mahita</name>
+    <marks>88</marks>
+  </student>
+</students>
