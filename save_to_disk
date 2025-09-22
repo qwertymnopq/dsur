@@ -1,0 +1,31 @@
+cat("Calculator (With R Objects)\n")
+numbers <- numeric(2)
+numbers[1] <- as.numeric(readline("Enter first number: "))
+numbers[2] <- as.numeric(readline("Enter second number: "))
+
+operations <- list(
+  "+" = function(x, y) x + y,
+  "-" = function(x, y) x - y,
+  "*" = function(x, y) x * y,
+  "/" = function(x, y) if (y != 0) x / y else "Error: Division by zero"
+)
+
+operator <- readline("Enter operator (+, -, *, /): ")
+
+if (operator %in% names(operations)) {
+  result <- operations[[operator]](numbers[1], numbers[2])
+} else {
+  result <- "Invalid operator"
+}
+
+calculator <- list(
+  num1 = numbers[1],
+  num2 = numbers[2],
+  operator = operator,
+  result = result
+)
+
+print(paste("Result =", calculator$result))
+
+saveRDS(calculator, file = "D:/RProjects/calculator_output.rds")
+print("Calculator object saved to disk at D:/RProjects/calculator_output.rds")
