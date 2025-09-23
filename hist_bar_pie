@@ -1,0 +1,14 @@
+library(ggplot2)
+ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
+  geom_histogram(binwidth = 0.3, color = "black", fill = "white") +
+  labs(title = "Histogram of Sepal Length")
+
+ggplot(iris, aes(x = Species, fill = Species)) +
+  geom_bar() +
+  labs(title = "Bar chart of Species")
+
+ggplot(iris, aes(x = "", fill = Species)) +
+  geom_bar(width = 1, stat = "count") +
+  coord_polar(theta = "y") +
+  labs(title = "Pie chart")
+
