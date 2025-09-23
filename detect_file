@@ -1,0 +1,36 @@
+# Load necessary libraries
+library(readr)      # For CSV and TXT
+library(readxl)     # For XLSX
+library(XML)        # For XML
+
+# Function to detect and read file
+read_dataset <- function(file_path) {
+  ext <- tools::file_ext(file_path)
+  
+  switch(ext,
+         "csv" = {
+           message("Reading CSV file...")
+           return(read_csv(file_path))
+         },
+         "txt" = {
+           message("Reading TXT file...")
+           return(read_lines(file_path))
+         },
+         "xlsx" = {
+           message("Reading Excel file...")
+           return(read_excel(file_path))
+         },
+         "xml" = {
+           message("Reading XML file...")
+           xml_data <- xmlParse(file_path)
+           return(xmlToDataFrame(xml_data))
+         },
+         {
+           stop("Unsupported file type: ", ext)
+         }
+  )
+}
+
+
+# data <- read_dataset("data/sample.csv")
+# print(head(data))
