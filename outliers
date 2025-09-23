@@ -1,0 +1,7 @@
+install.packages("ggplot2")
+library(ggplot2)
+
+  # Boxplot with red outliers
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 8)+
+    labs(title = "Box plot to detect outliers")
