@@ -19,6 +19,12 @@ txt_file_path <- "D:/R/marks_all.txt"
 data_txt <- read.table(txt_file_path,header=TRUE) 
 print(data_txt)
 
+# Reading a plain TXT file line by line
+url <- "https://www.gutenberg.org/files/1342/1342-0.txt"
+lines <- readLines(url, warn = FALSE)
+head(lines, 10)  # Display first 10 lines
+
+
 
 # Writing CSV 
 output_csv_path <- "D:/R/iris.csv" 
