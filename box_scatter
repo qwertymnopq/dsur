@@ -1,0 +1,9 @@
+install.packages("ggplot2")
+library(ggplot2)
+# Boxplot of Sepal.Length by Species
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot() + labs(title = "Box plot of Sepal length by species")
+
+# Scatterplot of Sepal dimensions colored by Species
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() + labs(title = "Scatter plot of Sepal dimensions")
